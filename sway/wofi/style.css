@@ -1,0 +1,38 @@
+window{
+	font-family: monospace;
+	background-color: rgba(0,0,0,0);
+}
+
+#input{
+	background: #000;
+	border-radius: 0;
+	border: 0;
+	box-shadow: none;
+	margin: 5px 100px;
+	transition: 0.5s ease-in-out;
+}
+
+#input:focus {
+	margin: 5px 40px;
+	background-color: white;
+	color: black;
+	transition: 0.5s ease-in-out;
+}
+
+#input image{
+	color: rgba(0,0,0,0);
+}
+
+#inner-box{
+	background-color: rgba(0,0,0,0);
+}
+
+#entry {
+	background-color: black;
+	margin: 2px;
+	padding: 5px 10px;
+}
+
+#entry:selected #text{
+	text-decoration: underline;
+}
