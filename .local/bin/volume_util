@@ -1,0 +1,37 @@
+#!/bin/sh
+
+MAX_VOLUME=65535
+
+action=$1
+
+# Get the current volume
+get_volume() {
+    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep "Volume" | cut -d " " -f 3)
+    echo -n $vol
+}
+
+fault() {
+    echo "Usage: $0 [+|-]<percentage>"
+    echo "Example: $0 +10%"
+    exit 1
+}
+
+calc() {
+    echo "$1" | bc
+}
+
+min() {
+    [[ $1 -lt $2 ]] && echo $1 || echo $2
+}
+
+sign=${action:0:1}
+number=${action:1}
+
+# validate input
+[[ ! $sign =~ ^(\+|-) ]] && fault
+[[ ! $number =~ ^[0-9]+$ ]] && fault
+
+# calculate new volume
+new_volume=$(calc "$(get_volume) $sign ($MAX_VOLUME * $number / 100)")
+pactl set-sink-volume @DEFAULT_SINK@ $(min $new_volume $MAX_VOLUME)
+

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+percentage=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | tr -d " " | cut -d ":" -f 2)
+state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | tr -d " " | cut -d ":" -f 2)
+
+while true
+do
+    if [ ${percentage::-1} -le 25 ] && [ $state == "discharging" ]; then
+        i3-nagbar -t warning -m 'Battery low, charge your laptop.'
+    fi
+    sleep 60
+done
