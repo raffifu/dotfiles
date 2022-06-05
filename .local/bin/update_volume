@@ -1,0 +1,46 @@
+#!/bin/sh
+
+device=$1
+
+update_output_vol() {
+    echo "$1" > ~/.config/output_volume
+}
+
+update_input_vol() {
+    echo "$1" > ~/.config/input_volume
+}
+
+if [ $device == 'output' ]
+then
+    speaker_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep Volume | tr -d ' ' | cut -d '/'  -f 2)
+    is_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | tr -d ' ' | cut -d ':' -f 2)
+
+    if [ $is_muted == 'yes' ]
+    then
+        update_output_vol "🔇"
+    else
+        speaker_volume=$left_volume
+
+        if [ ${speaker_volume::-1} -gt 80 ]
+        then
+            update_output_vol "🔊 $speaker_volume"
+        elif [ ${speaker_volume::-1} -gt 30 ]
+        then
+            update_output_vol "🔉 $speaker_volume"
+        else
+            update_output_vol "🔈 $speaker_volume"
+        fi
+    fi
+elif [ $device == 'input' ]
+then
+    mic_volume=$(pactl get-source-volume @DEFAULT_SOURCE@ | grep Volume | tr -d ' ' | cut -d '/'  -f 2)
+    is_muted=$(pactl get-source-mute @DEFAULT_SOURCE@ | tr -d ' ' | cut -d ':' -f 2)
+
+    if [ $is_muted == 'yes' ]
+    then
+        update_input_vol "🎙️ 🚫"
+    else
+        update_input_vol "🎙️ $mic_volume"
+    fi
+fi
+

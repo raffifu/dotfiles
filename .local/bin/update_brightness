@@ -1,0 +1,5 @@
+#!/bin/sh
+
+brightness=$(brightnessctl | grep Current | tr -d ' ' | cut -d '(' -f 2)
+
+echo ${brightness::-1} > ~/.config/brightness
