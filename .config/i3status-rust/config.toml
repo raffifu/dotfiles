@@ -1,0 +1,76 @@
+[theme]
+theme = "space-villain"
+[theme.overrides]
+idle_bg = "#000000"
+separator = ""
+[icons]
+icons = "awesome5"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents "
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "temperature"
+format = " $icon $average "
+
+[[block]]
+block = "load"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(max_w:25,rot_interval:0.5) $play $next |}"
+[[block.click]]
+button = "left"
+action = "play_pause"
+
+[[block]]
+block = "sound"
+device_kind = "sink"
+max_vol = 100
+
+[[block]]
+block = "sound"
+device_kind = "source"
+max_vol = 100
+
+[[block]]
+block = "net"
+format = " $icon {$ip |}"
+device = "^e"
+missing_format = ""
+[block.theme_overrides]
+idle_bg = { link = "good_bg" }
+idle_fg = { link = "good_fg" }
+
+[[block]]
+block = "net"
+format = " $icon {$ssid ($signal_strength) |}"
+device = "^w"
+missing_format = ""
+[block.theme_overrides]
+idle_bg = { link = "good_bg" }
+idle_fg = { link = "good_fg" }
+
+[[block]]
+block = "net"
+format = " $icon {$ip |}"
+device = "^tun"
+missing_format = ""
+[block.theme_overrides]
+idle_bg = { link = "warning_bg" }
+idle_fg = { link = "warning_fg" }
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
+
+[[block]]
+block = "time"
+interval = 60

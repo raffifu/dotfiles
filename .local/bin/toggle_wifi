@@ -1,0 +1,11 @@
+#!/bin/bash
+
+status=$(nmcli radio all | cut -d " " -f 3 | sed -n 2p)
+
+if [[ $status == 'disabled' ]]; then
+	nmcli radio wifi on	
+	notify-send -i /usr/share/icons/Papirus-Dark/symbolic/status/network-wireless-signal-good-symbolic.svg  "wlp3s0" "Device Enabled"
+else
+	nmcli radio wifi off
+	notify-send -i /usr/share/icons/Papirus-Dark/symbolic/status/network-wireless-disabled-symbolic.svg  "wlp3s0" "Device Disabled"
+fi
