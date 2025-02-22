@@ -1,0 +1,7 @@
+
+[window.padding]
+x = 10
+y = 10
+
+[general]
+import = ["/home/raffifu/.config/alacritty/dracula.toml"]

@@ -1,0 +1,86 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    min-height: 0;
+}
+
+#window{
+    padding-right: 10px;
+}
+
+window#waybar {
+    background-color: #003333;
+    color: #FFFFFF;   
+}
+#workspaces button {
+    padding: 0 5px;
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+#workspaces button:hover {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+#workspaces button.focused {
+    background: rgba(255,255,255,1);
+    color: #000;
+}
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #EEE;
+    color: #000;
+    padding: 0 10px;
+    font-size: 13px;
+}
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
+    background: rgba(0,0,0,0.3);
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio.muted,
+#clock{
+    background-color: rgba(0,0,0,0.6);
+}
+#battery.charging{
+    background-color: #fff;
+    color: #000;
+}
+
+window#waybar.spotify {
+    background-color: #29c050;
+    color: black;
+}
+
+window#waybar.firefox,
+window#waybar.chromium {
+    background-color: black;
+    color: white;
+}
+
+window#waybar.sakura {
+    background-color: #333;
+}
