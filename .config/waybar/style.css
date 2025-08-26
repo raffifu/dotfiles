@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: Hack Nerd Font;
     font-size: 12px;
     min-height: 0;
 }
@@ -11,9 +11,10 @@
 }
 
 window#waybar {
-    background-color: #003333;
-    color: #FFFFFF;   
+    background-color: #780000;
+    color: #fdf0f5;
 }
+
 #workspaces button {
     padding: 0 5px;
     background-color: rgba(0,0,0,0.3);
@@ -70,17 +71,15 @@ window#waybar {
     color: #000;
 }
 
-window#waybar.spotify {
-    background-color: #29c050;
-    color: black;
+#custom-uair {
+    padding: 0 5px;
 }
 
-window#waybar.firefox,
-window#waybar.chromium {
-    background-color: black;
-    color: white;
+#custom-uair.resumed {
+    background-color: #588157;
 }
 
-window#waybar.sakura {
-    background-color: #333;
+#custom-uair.paused {
+    background-color: #f6bd60;
+    color: #000;
 }
